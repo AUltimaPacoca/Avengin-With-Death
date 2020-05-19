@@ -24,19 +24,11 @@ public class Arma : MonoBehaviour
     void Update()
     {
         //controles de tiro
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            segurando = true;
-        }
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            segurando = false;
-        }
-        if (segurando == true)
+        if(esperarFirerate < firerate)
         {
             esperarFirerate += 1;
         }
-        if(esperarFirerate > firerate && municaoAtual != 0)
+        if (Input.GetKey(KeyCode.Mouse0) && esperarFirerate == firerate && municaoAtual != 0)
         {
             Tiro();
             municaoAtual -= 1;
