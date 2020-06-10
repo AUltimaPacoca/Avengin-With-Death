@@ -64,8 +64,15 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Arma.cs" />
     <Compile Include="Assets\Scripts\CamControl.cs" />
+    <Compile Include="Assets\Scripts\destroy.cs" />
     <Compile Include="Assets\Scripts\destruitveis.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\Inimigos.cs" />
+    <Compile Include="Assets\Scripts\Luzes.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
+    <Compile Include="Assets\Scripts\Player5.cs" />
+    <Compile Include="Assets\Scripts\PlayerControler.cs" />
+    <Compile Include="Assets\Scripts\Sons.cs" />
+    <Compile Include="Assets\Scripts\transition.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Marques/Documents/Projetos Unity/Avenging With Death/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

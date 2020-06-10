@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 692c853d211768c479d2f048b62703fd
+  - enabled: 1
+    path: Assets/Scenes/transition.unity
+    guid: c4ee449e2afb94844b00b72726ac449c
+  - enabled: 1
+    path: Assets/Scenes/Fase 1 - Cidade.unity
+    guid: 3d1133edcb72e90409807b57547b364c
+  - enabled: 1
+    path: Assets/Scenes/Fase 2 - Balada.unity
+    guid: f5f16a4f7d334c94687e37cfa460573d
+  - enabled: 1
+    path: Assets/Scenes/Fase 3 - Usina.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

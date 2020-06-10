@@ -5,79 +5,124 @@ using UnityEngine.UI;
 
 public class Arma : MonoBehaviour
 {
-    //configurações da arma
-    public float dano, alcance, firerate, esperarFirerate;
+    //configurações da arma     
+    public float dano, alcance, firerate, esperarFirerate, camFov = 60;
     public Camera cam;
-    public ParticleSystem particulaDisparo;
-    public GameObject impacto;
-    public bool segurando = false;
+    public ParticleSystem sangueParticula, tiroParticula;
+    public GameObject mao, sons;
+    public bool segurando = false, podeAtirar = true;
 
     public int municaoAtual, municaoMaxima, municaoExtra, tempoRecarga, municaoRecarregar;
 
     public Text MunicaoText, municaoExtraText;
-
-    void Start()
-    {
-        
-    }
-
+    
     void Update()
     {
+        tempoRecarga += 1;
         //controles de tiro
-        if(esperarFirerate < firerate)
+        if (podeAtirar == true)
         {
-            esperarFirerate += 1;
-        }
-        if (Input.GetKey(KeyCode.Mouse0) && esperarFirerate == firerate && municaoAtual != 0)
-        {
-            Tiro();
-            municaoAtual -= 1;
+            if (esperarFirerate < firerate)
+            {
+                esperarFirerate += 1;
+            }
+            if (Input.GetKey(KeyCode.Mouse0) && esperarFirerate == firerate && municaoAtual != 0)
+            {
+                Tiro();
+                sons.GetComponent<Sons>().SomDeTiro();
+                municaoAtual -= 1;
+                GetComponent<Animator>().SetBool("estaAtirando", true);
+                mao.GetComponent<Animator>().SetBool("estaAtirando", true);
+            }
+            else
+            {
+                GetComponent<Animator>().SetBool("estaAtirando", false);
+                mao.GetComponent<Animator>().SetBool("estaAtirando", false);
+            }
         }
 
         //recarregar
         municaoRecarregar = municaoMaxima - municaoAtual;
         MunicaoText.text = municaoAtual + "/" + municaoMaxima;
         municaoExtraText.text = "" + municaoExtra;
-
-        if (Input.GetKeyDown(KeyCode.R) || municaoAtual == 0)
+        
+        if ((Input.GetKeyDown(KeyCode.R) || municaoAtual == 0) && tempoRecarga >= 200 && municaoExtra != 0 && municaoAtual < municaoMaxima)
         {
-            if(municaoRecarregar != 0 && municaoExtra != 0 && municaoExtra > municaoRecarregar)
+            mao.GetComponent<Animator>().SetBool("estaRecarregando", true);
+            GetComponent<Animator>().SetBool("estaRecarregando", true);
+            sons.GetComponent<Sons>().SomDeReload();
+            if (municaoRecarregar != 0 && municaoExtra != 0 && municaoExtra > municaoRecarregar)
             {
                 municaoExtra = municaoExtra - municaoRecarregar;
                 municaoAtual = municaoAtual + municaoRecarregar;
             }
-            if(municaoRecarregar != 0 && municaoExtra != 0 && municaoExtra < municaoRecarregar)
+            if (municaoRecarregar != 0 && municaoExtra != 0 && municaoExtra < municaoRecarregar)
             {
-                municaoAtual = municaoAtual + municaoExtra;
+                municaoAtual = municaoAtual  + municaoExtra;
                 municaoExtra = 0;
             }
+            tempoRecarga = 0;
         }
-        //log
-        if (Input.GetKeyDown(KeyCode.L))
+        else
         {
-            Debug.Log("A munição Atual é: " + municaoAtual);
-            Debug.Log("A munição Maxima é: " + municaoMaxima);
-            Debug.Log("A munição Extra é: " + municaoExtra);
+            mao.GetComponent<Animator>().SetBool("estaRecarregando", false);
+            GetComponent<Animator>().SetBool("estaRecarregando", false);
+        }
+
+        //mirar
+
+        cam.GetComponent<Camera>().fieldOfView = camFov;
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            if(camFov > 45)
+            {
+                camFov -= 1;
+            }
+            mao.GetComponent<Animator>().SetBool("estaMirando", true);
+        }
+        else
+        {
+            if(camFov < 60)
+            {
+                camFov += 1;
+            }
+            mao.GetComponent<Animator>().SetBool("estaMirando", false);
+        }
+        //animações
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+        {
+            mao.GetComponent<Animator>().SetBool("estaCorrendo", true);
+            podeAtirar = false;
+        }
+        else
+        {
+            mao.GetComponent<Animator>().SetBool("estaCorrendo", false);
+            podeAtirar = true;
         }
     }
 
     void Tiro()
     {
         esperarFirerate = 0;
-        //particulaDisparo.Play();
         RaycastHit hit;
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, alcance))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, alcance))
         {
             print("mirando em: " + hit.transform.name);
-
-
-            destruitveis dest = hit.transform.GetComponent<destruitveis>();
-            if(dest != null)
+            Inimigos inim = hit.transform.GetComponent<Inimigos>();
+            if (inim != null)
             {
-                dest.tomarDano(dano);
+                inim.TomarDano();
             }
-
-            //GameObject impactoOBJ = Instantiate(impacto, hit.point, Quaternion.LookRotation(hit.normal));
+            if(hit.collider.gameObject.tag == "inimigos")
+            {
+               Instantiate(sangueParticula, hit.point + (hit.normal), Quaternion.FromToRotation(-Vector3.back, hit.normal));
+            }
         }
+        tiroParticula.Play();
+    }
+    public void PegarMunicao()
+    {
+        municaoExtra += 20;
+        print("pegou municao");
     }
 }
