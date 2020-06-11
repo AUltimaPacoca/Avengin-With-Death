@@ -6,7 +6,7 @@ public class Sons : MonoBehaviour
 {
     public float tempoPasso, tempoSom, tempoReload, MaxTempoReload;
     private AudioSource source;
-    public AudioClip somDePassoAudio, somDeTiroAudio, somDeReloadAudio, somDeZumbiAudio;
+    public AudioClip somDePassoAudio, somDeTiroAudio, somDeReloadAudio, somDeZumbiAudio, somDeHPUPAudio, somDeMunicaoUPAudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +45,13 @@ public class Sons : MonoBehaviour
     public void SomDeZumbi()
     {
         source.PlayOneShot(somDeZumbiAudio);
+    }
+    public void SomDeHPUP()
+    {
+        source.PlayOneShot(somDeHPUPAudio);
+    }
+    public void SomDeMunicaoUP()
+    {
+        source.PlayOneShot(somDeMunicaoUPAudio);
     }
 }

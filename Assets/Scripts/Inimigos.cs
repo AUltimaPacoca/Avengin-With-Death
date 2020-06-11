@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Inimigos : MonoBehaviour
@@ -8,8 +9,9 @@ public class Inimigos : MonoBehaviour
     public string nome;
     public float vida, velocidade, ataque, dano, passo, tempoParaDano;
     public bool modoJaspy;
-    public GameObject sons;
+    public GameObject sons, telaDeVitoria;
     Transform alvo;
+    public Slider vidaJaspy; 
 
     private void Start()
     {
@@ -19,8 +21,8 @@ public class Inimigos : MonoBehaviour
         if (modoJaspy == true)
         {
             nome = "Jaspy";
-            vida = 250;
-            velocidade = 2.5f;
+            vida = 600;
+            velocidade = 3.5f;
             dano = 20;
         }
         else
@@ -36,6 +38,7 @@ public class Inimigos : MonoBehaviour
 
     private void Update()
     {
+        vidaJaspy.value = vida;
         sons.GetComponent<Sons>().SomDeZumbi();
         passo = velocidade * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, alvo.position, passo);
@@ -48,12 +51,20 @@ public class Inimigos : MonoBehaviour
         if (vida <= 0)
         {
             Destruir();
+            if(vidaJaspy != null)
+            {
+                Destroy(vidaJaspy.gameObject);
+            }
         }
     }
 
     public void Destruir()
     {
         Destroy(gameObject);
+        if(this.nome == "Jaspy")
+        {
+            telaDeVitoria.GetComponent<Animator>().SetBool("venceu", true);
+        }
     }
 
     private void OnCollisionStay(Collision collision)

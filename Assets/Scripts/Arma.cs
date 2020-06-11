@@ -107,7 +107,6 @@ public class Arma : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, alcance))
         {
-            print("mirando em: " + hit.transform.name);
             Inimigos inim = hit.transform.GetComponent<Inimigos>();
             if (inim != null)
             {
@@ -123,6 +122,5 @@ public class Arma : MonoBehaviour
     public void PegarMunicao()
     {
         municaoExtra += 20;
-        print("pegou municao");
     }
 }

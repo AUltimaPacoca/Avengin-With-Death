@@ -8,7 +8,7 @@ public class PlayerControler : MonoBehaviour
     public Slider barraVida;
     public float speed, sensibility, jumpHeight, vida, dano, bateriaLanterna, gameOverVelo, gameOverEsqStart, gameOverDirStart;
     public bool enableMouse;
-    public GameObject arma, lanterna, gameOverCanvas;
+    public GameObject arma, lanterna, gameOverCanvas, sons;
     public Text lantText;
 
     private Player5 playerConf;
@@ -135,17 +135,18 @@ public class PlayerControler : MonoBehaviour
         if(collision.gameObject.tag == "inimigos")
         {
             dano = collision.gameObject.GetComponent<Inimigos>().dano;
-            print("o dano inimigo é de " + dano);
         }
         if (collision.gameObject.tag == "itemVida")
         {
             vida += 40;
+            sons.GetComponent<Sons>().SomDeHPUP();
             Destroy(collision.gameObject);
         }
 
         if(collision.gameObject.tag == "municao")
         {
             armaScript.PegarMunicao();
+            sons.GetComponent<Sons>().SomDeMunicaoUP();
             Destroy(collision.gameObject);
         }
     }
