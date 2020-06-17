@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
@@ -8,7 +9,7 @@ public class PlayerControler : MonoBehaviour
     public Slider barraVida;
     public float speed, sensibility, jumpHeight, vida, dano, bateriaLanterna, gameOverVelo, gameOverEsqStart, gameOverDirStart;
     public bool enableMouse;
-    public GameObject arma, lanterna, gameOverCanvas, sons;
+    public GameObject arma, lanterna, gameOverCanvas, sons, menu;
     public Text lantText;
 
     private Player5 playerConf;
@@ -128,6 +129,7 @@ public class PlayerControler : MonoBehaviour
     public void GameOver()
     {
         gameOverCanvas.GetComponent<Animator>().SetBool("gameOver", true);
+        AudioListener.volume = 0;
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -149,7 +151,9 @@ public class PlayerControler : MonoBehaviour
             sons.GetComponent<Sons>().SomDeMunicaoUP();
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "Nivel 3" && menu.GetComponent<Menu>().contagemZumbis == 0)
+        {
+            SceneManager.LoadScene("Fase 3 - Usina");
+        }
     }
-
-
 }

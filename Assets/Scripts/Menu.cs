@@ -88,16 +88,13 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("transition");
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(contagemZumbis == 0)
-        {
-            SceneManager.LoadScene("Fase 3 - Usina");
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         SceneManager.LoadScene("Fase 2 - Balada");
+    }
+
+    public void LoadBoss()
+    {
+        SceneManager.LoadScene("Fase 3 - Usina");
     }
 }
