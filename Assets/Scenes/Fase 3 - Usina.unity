@@ -1559,7 +1559,7 @@ PrefabInstance:
     - target: {fileID: 5029403711059915727, guid: e727e3507b546de4e917410cbb060a0d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.522312
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5029403711059915727, guid: e727e3507b546de4e917410cbb060a0d,
         type: 3}
@@ -1616,16 +1616,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 51436019873517401, guid: e727e3507b546de4e917410cbb060a0d,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 51436019873517401, guid: e727e3507b546de4e917410cbb060a0d,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 51436019873517381, guid: e727e3507b546de4e917410cbb060a0d,
         type: 3}
       propertyPath: vidaJaspy
@@ -1660,6 +1650,16 @@ PrefabInstance:
         type: 3}
       propertyPath: seguir
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 51436019873517401, guid: e727e3507b546de4e917410cbb060a0d,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 51436019873517401, guid: e727e3507b546de4e917410cbb060a0d,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8329216057593496029, guid: e727e3507b546de4e917410cbb060a0d,
         type: 3}
@@ -1880,12 +1880,12 @@ PrefabInstance:
     - target: {fileID: 2502341069973633305, guid: 6c6e156f1beb8ef418ccc311817bf466,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.460316
+      value: 19.9
       objectReference: {fileID: 0}
     - target: {fileID: 2502341069973633305, guid: 6c6e156f1beb8ef418ccc311817bf466,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 241.35677
+      value: 253.4
       objectReference: {fileID: 0}
     - target: {fileID: 2502341069973633305, guid: 6c6e156f1beb8ef418ccc311817bf466,
         type: 3}
@@ -1937,6 +1937,11 @@ PrefabInstance:
       propertyPath: sons
       value: 
       objectReference: {fileID: 2116935682}
+    - target: {fileID: 2502341069973633304, guid: 6c6e156f1beb8ef418ccc311817bf466,
+        type: 3}
+      propertyPath: barraVidaJaspy
+      value: 
+      objectReference: {fileID: 150943740}
     - target: {fileID: 2502341068974454778, guid: 6c6e156f1beb8ef418ccc311817bf466,
         type: 3}
       propertyPath: m_TagString

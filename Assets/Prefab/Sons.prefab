@@ -49,7 +49,7 @@ MonoBehaviour:
   tempoSom: 0
   tempoReload: 0
   MaxTempoReload: 0
-  somDePassoAudio: {fileID: 8300000, guid: c0bde2440ee3f8244949063c641aaafb, type: 3}
+  somDePassoAudio: {fileID: 8300000, guid: 10fbf3fd009dc9f4eb4432e11dedc42e, type: 3}
   somDeTiroAudio: {fileID: 8300000, guid: c986783d27d370a43a20e79a02b04e95, type: 3}
   somDeReloadAudio: {fileID: 8300000, guid: 33a5302271a5f3b4a874df6d70ea5bfb, type: 3}
   somDeZumbiAudio: {fileID: 8300000, guid: 9314e00dce7c26c449256d4c7a581e4d, type: 3}
@@ -57,6 +57,7 @@ MonoBehaviour:
   somDeZumbiAudio3: {fileID: 8300000, guid: 598c267d1d3040f44bf4ab221d8303dd, type: 3}
   somDeHPUPAudio: {fileID: 8300000, guid: 842a9cf855b9ad54d8f11d5de9203d4e, type: 3}
   somDeMunicaoUPAudio: {fileID: 8300000, guid: 842a9cf855b9ad54d8f11d5de9203d4e, type: 3}
+  somDaJaspy: {fileID: 8300000, guid: 813d8a0b787aba244856699c1e0e9b32, type: 3}
 --- !u!82 &275706151281497399
 AudioSource:
   m_ObjectHideFlags: 0

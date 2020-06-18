@@ -7,7 +7,7 @@ public class Inimigos : MonoBehaviour
 {
     public Arma armaScript;
     public string nome;
-    public float vida, velocidade, ataque, dano, passo, tempoParaDano, tempoParaSom, tempoAleatorio, posY, rotX;
+    public float vida, velocidade, ataque, dano, passo, tempoParaDano, tempoParaSom, tempoAleatorio, posY, rotX, tempoParaDanoIndividual;
     public bool modoJaspy, seguir;
     public GameObject sons, telaDeVitoria;
     Transform alvo;
@@ -25,16 +25,17 @@ public class Inimigos : MonoBehaviour
             nome = "Jaspy";
             vida = 600;
             velocidade = 3.5f;
-            dano = 20;
+            dano = 50;
+            tempoParaDanoIndividual = 100;
         }
         else
         {
             nome = "Zumbi";
             vida = 50;
             velocidade = 2;
-            dano = 5;
+            dano = 10;
+            tempoParaDanoIndividual = 180;
         }
-        
         tempoParaDano = 80f;
     }
 
@@ -67,7 +68,7 @@ public class Inimigos : MonoBehaviour
         tempoParaSom += 1;
         if(tempoParaSom > tempoAleatorio)
         {
-            tempoAleatorio = Random.Range(200, 400);
+            tempoAleatorio = Random.Range(400, 800);
             sons.GetComponent<Sons>().SomDeZumbi();
             tempoParaSom = 0;
         }
@@ -103,7 +104,7 @@ public class Inimigos : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
 
-        if (collision.gameObject.tag == "Player" && tempoParaDano >= 300)
+        if (collision.gameObject.tag == "Player" && tempoParaDano >= tempoParaDanoIndividual)
         {
             //dano
             collision.gameObject.GetComponent<PlayerControler>().TomarDano();

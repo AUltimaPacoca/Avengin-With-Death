@@ -11,6 +11,7 @@ public class PlayerControler : MonoBehaviour
     public bool enableMouse;
     public GameObject arma, lanterna, gameOverCanvas, sons, menu;
     public Text lantText;
+    public Slider barraVidaJaspy;
 
     private Player5 playerConf;
     private Arma armaScript;
@@ -130,6 +131,10 @@ public class PlayerControler : MonoBehaviour
     {
         gameOverCanvas.GetComponent<Animator>().SetBool("gameOver", true);
         AudioListener.volume = 0;
+        if(barraVidaJaspy != null)
+        {
+            barraVidaJaspy.gameObject.SetActive(false);
+        }
     }
 
     public void OnCollisionEnter(Collision collision)

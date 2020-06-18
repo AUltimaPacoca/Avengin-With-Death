@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Sons : MonoBehaviour
@@ -7,12 +8,15 @@ public class Sons : MonoBehaviour
     public int somAleatorio;
     public float tempoPasso, tempoSom, tempoReload, MaxTempoReload;
     private AudioSource source;
-    public AudioClip somDePassoAudio, somDeTiroAudio, somDeReloadAudio, somDeZumbiAudio, somDeZumbiAudio2, somDeZumbiAudio3, somDeHPUPAudio, somDeMunicaoUPAudio;
+    public AudioClip somDePassoAudio, somDeTiroAudio, somDeReloadAudio, somDeZumbiAudio, somDeZumbiAudio2, somDeZumbiAudio3, somDeHPUPAudio, somDeMunicaoUPAudio, somDaJaspy;
     // Start is called before the first frame update
     void Start()
     {
         source = GetComponent<AudioSource>();
-        tempoPasso = 40;
+        if (SceneManager.GetActiveScene().name == "Fase 3 - Usina")
+        {
+            source.PlayOneShot(somDaJaspy);
+        }
     }
 
     // Update is called once per frame
@@ -26,11 +30,11 @@ public class Sons : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
         {
-            tempoPasso = 60f;
+            tempoPasso = 30f;
         }
         else
         {
-            tempoPasso = 30f;
+            tempoPasso = 60f;
         }
     }
 
