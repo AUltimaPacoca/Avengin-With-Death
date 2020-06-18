@@ -1010,9 +1010,9 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 762f6b1b538e8e04bbe2400d5a39ed99, type: 3}
-  - {fileID: -6478536213147159724, guid: 762f6b1b538e8e04bbe2400d5a39ed99, type: 3}
-  - {fileID: -3846018093981099296, guid: 762f6b1b538e8e04bbe2400d5a39ed99, type: 3}
+  - {fileID: 2100000, guid: f18e1e7851852e641a1eae5d6ac45464, type: 2}
+  - {fileID: 2100000, guid: f18e1e7851852e641a1eae5d6ac45464, type: 2}
+  - {fileID: 2100000, guid: f18e1e7851852e641a1eae5d6ac45464, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1217,6 +1217,10 @@ MonoBehaviour:
   dano: 0
   passo: 0
   tempoParaDano: 0
+  tempoParaSom: 0
+  tempoAleatorio: 0
+  posY: 0
+  rotX: 0
   modoJaspy: 0
   seguir: 0
   sons: {fileID: 0}
